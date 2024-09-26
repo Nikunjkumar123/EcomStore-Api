@@ -22,6 +22,10 @@ app.use(cookieParser(process.env.SECRET_KEY));
 app.use(express.static('./public'));
 app.use(fileUpload());
 
+app.get('/',(req,res)=>{
+    res.send('<h1>WELCOME TO ECCOMERCE STORE API ENDPOINTS</h1>)
+})
+
 app.get('/api/v1',(req,res)=>{
     console.log(req.signedCookies)
     res.send('ecommerce API')
