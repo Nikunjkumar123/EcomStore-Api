@@ -22,11 +22,12 @@ const getSingleProduct = async(req,res)=>{
   res.status(StatusCodes.OK).json({ product });
 }
 const updateProduct = async(req,res)=>{
-    const { id: productId } = req.params;
+    const productId  = req.params.id;
     const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
         new: true,
     runValidators: true,
   });
+  
   if (!product) {
     throw new CustomError.NotFoundError(`No product with id : ${productId}`);
   }
